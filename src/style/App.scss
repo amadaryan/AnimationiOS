@@ -1,0 +1,21 @@
+.App {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+
+  .app-tile-container {
+    width: 500px;
+    min-width: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    transform: scale(1);
+    transition: transform .3s ease-in-out 0s, visibility 0s linear .3s;
+  }
+
+  .app-tile-container.active {
+    transform: scale(0.9);
+  }
+}
