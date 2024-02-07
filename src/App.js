@@ -6,27 +6,20 @@ import './style/App.scss';
 function App() {
   const [appOpen, setAppOpen] = useState(false);
   const [selectedApp, setSelectedApp] = useState(null);
-
   const [appTransform, setAppTransform] = useState("");
-
   const colors = ["#FF6633", "#FFB399", "#FF33FF", "#FFFF99", "#00B3E6", "#E6B333"];
 
   const handleTileOpen = (index, e) => {
     setSelectedApp(index);
     setAppOpen(true);
-
     const appTile = e.target.closest('.AppTile');
     const appContainer = document.querySelector('.AppContainer');
-
     const tileRect = appTile.getBoundingClientRect();
     const containerRect = appContainer.getBoundingClientRect();
-    
     const translateX = tileRect.x;
     const translateY = tileRect.y;
-
     const scaleX = tileRect.width / containerRect.width;
     const scaleY = tileRect.height / containerRect.height;
-
     const appTransformValue = `translate3d(${translateX}px, ${translateY}px, 0) scale(${scaleX}, ${scaleY})`;
     setAppTransform(appTransformValue);
   }
@@ -40,8 +33,8 @@ function App() {
   if (appOpen) {
     appTileContainer += " active";
   }
-  return (
 
+  return (
     <div className="App">
       <div className={appTileContainer}>
         {
@@ -56,7 +49,6 @@ function App() {
           })
         }
       </div>
-
       <AppContainer
         index={selectedApp}
         appOpen={appOpen}
@@ -64,7 +56,6 @@ function App() {
         bgColor={colors[selectedApp]}
         handleTileClose={handleTileClose} 
       />
-
     </div>
   );
 }
