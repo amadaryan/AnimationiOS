@@ -18,9 +18,19 @@
     right: 20px;
     cursor: pointer;
   }
+
+  h1, p, svg {
+		color:#fff;
+		padding:50px;
+		opacity:0;
+		transition:opacity .15s linear 0s;
+  }
 }
 
 .AppContainer.active {
   visibility:visible;
   transition: transform .3s ease-in-out 0s, visibility .3s linear .0s;
+  h1, p, svg {
+		opacity:1;
+  }
 }

@@ -11,50 +11,38 @@ function App() {
 
   const handleTileOpen = (index, e) => {
     setSelectedApp(index);
-    setAppOpen(true);
     const appTile = e.target.closest('.AppTile');
-    const appContainer = document.querySelector('.AppContainer');
     const tileRect = appTile.getBoundingClientRect();
-    const containerRect = appContainer.getBoundingClientRect();
     const translateX = tileRect.x;
     const translateY = tileRect.y;
-    const scaleX = tileRect.width / containerRect.width;
-    const scaleY = tileRect.height / containerRect.height;
+    const scaleX = tileRect.width / window.innerWidth;
+    const scaleY = tileRect.height / window.innerHeight;
     const appTransformValue = `translate3d(${translateX}px, ${translateY}px, 0) scale(${scaleX}, ${scaleY})`;
     setAppTransform(appTransformValue);
+    setAppOpen(true);
   }
 
   const handleTileClose = () => {
     setAppOpen(false);
-    setAppTransform("translate3d(0,0,0) scale(1)");
   }
-
-  let appTileContainer = "app-tile-container";
-  if (appOpen) {
-    appTileContainer += " active";
-  }
-
+  
   return (
     <div className="App">
-      <div className={appTileContainer}>
-        {
-          colors.map((color, index) => {
-            return (
-              <AppTile
-                key={index}
-                bgColor={color}
-                onClick={(e) => handleTileOpen(index, e)} 
-              />
-            );
-          })
-        }
+      <div className={appOpen ? "app-tile-container active" : "app-tile-container"}>
+        {colors.map((color, index) => (
+          <AppTile
+            key={index}
+            bgColor={color}
+            onClick={(e) => handleTileOpen(index, e)} 
+          />
+        ))}
       </div>
       <AppContainer
         index={selectedApp}
         appOpen={appOpen}
         appTransform={appTransform}
         bgColor={colors[selectedApp]}
-        handleTileClose={handleTileClose} 
+        handleTileClose={handleTileClose}
       />
     </div>
   );
