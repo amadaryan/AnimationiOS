@@ -6,7 +6,7 @@
   left: 0;
   transform-origin: top left;
   border-radius: 20px;
-  transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1), visibility 0s linear 0.3s;
+  transition: transform 0.5s cubic-bezier(0.68,-0.55,0.27,1.55), visibility 0s linear 0.3s;
   visibility: hidden;
   overflow: hidden;
 
@@ -31,7 +31,7 @@
 
 .AppContainer.active {
   visibility: visible;
-  transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1), visibility 0.3s linear 0s;
+  transition: transform 0.5s cubic-bezier(0.68,-0.55,0.27,1.55), visibility 0.3s linear 0s;
   h1,
   p,
   svg {
