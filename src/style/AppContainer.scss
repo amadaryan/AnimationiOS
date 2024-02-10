@@ -1,36 +1,40 @@
 .AppContainer {
-  width:100%;
-  min-height:100vh;
-  position:fixed;
-  top:0;
-  left:0;
-  transform-origin:top left;
+  width: 100%;
+  min-height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform-origin: top left;
   border-radius: 20px;
-  transition: transform .3s ease-in-out 0s, visibility 0s linear .3s;
-  visibility:hidden;
-  overflow:hidden;
+  transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1), visibility 0s linear 0.3s;
+  visibility: hidden;
+  overflow: hidden;
 
   svg {
     stroke: #fff;
-    font-size:24px;
+    font-size: 24px;
     position: absolute;
     top: 20px;
     right: 20px;
     cursor: pointer;
   }
 
-  h1, p, svg {
-		color:#fff;
-		padding:50px;
-		opacity:0;
-		transition:opacity .15s linear 0s;
+  h1,
+  p,
+  svg {
+    color: #fff;
+    padding: 50px;
+    opacity: 0;
+    transition: opacity 0.3s linear 0s;
   }
 }
 
 .AppContainer.active {
-  visibility:visible;
-  transition: transform .3s ease-in-out 0s, visibility .3s linear .0s;
-  h1, p, svg {
-		opacity:1;
+  visibility: visible;
+  transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1), visibility 0.3s linear 0s;
+  h1,
+  p,
+  svg {
+    opacity: 1;
   }
 }
