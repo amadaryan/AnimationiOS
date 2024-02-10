@@ -6,12 +6,23 @@ function AppContainer({ index, appOpen, appTransform, bgColor, handleTileClose }
 
   useEffect(() => {
     if (containerRef.current) {
-      containerRef.current.style.transform = appOpen ? `translate3d(0, 0, 0) scale(1, 1)` : appTransform;
+      if (appOpen) {
+        containerRef.current.style.transition = "0s";
+        containerRef.current.style.transform = appTransform;
+      }
+      setTimeout(() => {
+        containerRef.current.style.transition = "transform 0.3s ease-in-out 0s, visibility 0.3s linear 0s";
+        containerRef.current.style.transform = appOpen ? `translate3d(0, 0, 0) scale(1, 1)` : appTransform;
+      }, 0);
     }
   }, [appOpen, appTransform]);
 
   return (
-    <div ref={containerRef} className={appOpen ? "AppContainer active" : "AppContainer"} style={{ backgroundColor: bgColor }}>
+    <div
+      ref={containerRef}
+      className={appOpen ? "AppContainer active" : "AppContainer"}
+      style={{ backgroundColor: bgColor }}
+    >
       <h1>Application n° {index + 1}</h1>
       <p>
         An application aims to provide a specific solution or service to users. It can simplify tasks, automate processes,
